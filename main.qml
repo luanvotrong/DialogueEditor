@@ -11,22 +11,29 @@ Window {
     visibility: "Maximized"
     width: 640
     height: 480
-    title: qsTr("Hello World")
+    title: qsTr("Dialogue Editor")
 
-    MenuForm {
-        id: menuForm
-    }
+    Item {
+        MenuForm {
+            id: menuForm
+            anchors.bottom: undefined
+            anchors.top: parent.top
+        }
 
-    MainForm {
-        id: mainForm
+        MainForm {
+            id: mainForm
+            anchors.top: undefined
+            anchors.bottom: parent.bottom
+        }
     }
 
     function init() {
-        console.log("fuck yeah");
         menuForm.width = width
-        menuForm.height = height * 20 / 100
+        menuForm.height = height * 10 / 100
+        console.log(menuForm.width + " " + menuForm.height);
 
         mainForm.width = width
-        mainForm.height = height * 80 / 100
+        mainForm.height = height * 90 / 100
+        console.log(mainForm.width + " " + mainForm.height);
     }
 }
