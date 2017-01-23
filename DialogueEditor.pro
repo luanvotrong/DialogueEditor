@@ -3,7 +3,9 @@ TEMPLATE = app
 QT += qml quick
 CONFIG += c++11
 
-SOURCES += cpp/main.cpp
+SOURCES += cpp/main.cpp \
+    cpp/UIHandler.cpp \
+    cpp/MyMain.cpp
 
 RESOURCES += \
     qml/qml.qrc
@@ -32,3 +34,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     js/main.js
+
+HEADERS += \
+    cpp/UIHandler.h \
+    cpp/MyMain.h

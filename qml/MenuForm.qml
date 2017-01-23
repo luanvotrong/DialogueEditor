@@ -10,7 +10,7 @@ Item {
     Button {
         text: "new "
         onClicked: {
-            mainWindow.test()
+            uiHandler.testClicked();
         }
     }
 }

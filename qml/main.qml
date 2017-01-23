@@ -2,9 +2,6 @@ import QtQuick 2.5
 import QtQuick.Window 2.2
 
 Window {
-    property alias menuForm: menuForm
-    property alias mainForm: mainForm
-
     id: mainWindow
     objectName: "mainWindow"
     visible: true
@@ -35,6 +32,8 @@ Window {
         mainForm.width = width
         mainForm.height = height * 90 / 100
         console.log(mainForm.width + " " + mainForm.height);
+
+        uiHandler.testClicked();
     }
 
     function test() {
