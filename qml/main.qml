@@ -36,4 +36,8 @@ Window {
         mainForm.height = height * 90 / 100
         console.log(mainForm.width + " " + mainForm.height);
     }
+
+    function test() {
+        console.log("test");
+    }
 }

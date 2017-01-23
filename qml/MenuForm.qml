@@ -1,6 +1,5 @@
 import QtQuick 2.4
-import QtQuick.Controls 1.4
-import "main.js" a
+import QtQuick.Controls 2.0
 
 Item {
     Rectangle {
@@ -9,8 +8,9 @@ Item {
     }
 
     Button {
-        clicked: {
-            Test.test
+        text: "new "
+        onClicked: {
+            mainWindow.test()
         }
     }
 }
