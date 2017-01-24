@@ -1,5 +1,6 @@
 import QtQuick 2.5
 import QtQuick.Window 2.2
+import "../js/JSUtilities.js" as Utilities
 
 Window {
     id: mainWindow
@@ -32,11 +33,6 @@ Window {
         mainForm.width = width
         mainForm.height = height * 90 / 100
         console.log(mainForm.width + " " + mainForm.height);
-
-        uiHandler.testClicked();
-    }
-
-    function test() {
-        console.log("test");
+        Utilities.Utils.createObject();
     }
 }

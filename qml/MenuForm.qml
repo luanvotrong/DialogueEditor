@@ -8,7 +8,7 @@ Item {
     }
 
     Button {
-        text: "new "
+        text: "new dialogue"
         onClicked: {
             uiHandler.testClicked();
         }

@@ -3,5 +3,7 @@
         <file>main.qml</file>
         <file>MainForm.qml</file>
         <file>MenuForm.qml</file>
+        <file>Dialogue.qml</file>
+        <file>../js/JSUtilities.js</file>
     </qresource>
 </RCC>
