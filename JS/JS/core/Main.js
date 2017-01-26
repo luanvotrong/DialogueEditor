@@ -9,17 +9,18 @@ function Main() {
     var last = Date.now();
     this.run = function () {
         //RUNNING
+        loop();
+    }
+
+    var loop = function () {
+
         var now = Date.now();
         console.log("running");
-        if (now - last >= FPS_INTERVAL) {
-            update();
-            draw();
-        }
+        var dt = now - last;
+        Core.GameLoop(dt);
+        last = now;
+        //window.requestAnimationFrame(loop);
+        setTimeout(loop, FPS_INTERVAL);
     }
-    var run = function () {}
-
-    var update = function (dt) {}
-
-    var draw = function () {}
 }
 var Main = new Main();
