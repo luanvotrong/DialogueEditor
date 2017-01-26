@@ -13,4 +13,8 @@ Item {
             uiHandler.testClicked();
         }
     }
+
+    Component.onCompleted: {
+        console.log("completed");
+    }
 }

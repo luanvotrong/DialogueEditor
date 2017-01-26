@@ -25,7 +25,7 @@ Window {
         }
     }
 
-    function init() {
+    Component.onCompleted: {
         menuForm.width = width
         menuForm.height = height * 10 / 100
         console.log(menuForm.width + " " + menuForm.height);
