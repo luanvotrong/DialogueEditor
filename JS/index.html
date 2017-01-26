@@ -3,9 +3,17 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Gamedev Canvas Workshop</title>
-    <link rel="stylesheet" href="style/main.css" /> </head>
-
+    <title>Dialogue editor</title>
+    <link rel="stylesheet" href="style/main.css" />
+    <script src="JS/core/Graphic.js" async></script>
+    <script src="JS/core/Main.js" async></script>
+    
+    <script>
+        window.onload = function() {
+            window.Main.Init();
+        }
+    </script>
+</head>
 <body>
     <canvas id="myCanvas" width=100% height=100%></canvas>
 </body>
