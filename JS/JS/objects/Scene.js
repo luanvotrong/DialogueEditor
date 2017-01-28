@@ -1,5 +1,14 @@
 function Scene() {
     this.update = function (dt) {
+    }
+
+    this.draw = function () {
+        var context = Graphic.context;
+        context.fillStyle = '#000';
+        context.rect(0, 0, Graphic.screenW/2, Graphic.screenH/2);
+        context.fill();
+        console.log("draws");
+        
         var touchInfo = Input.GetTouchInfo();
         if (touchInfo.isTouch) {
             var context = Graphic.context;
@@ -14,14 +23,6 @@ function Scene() {
             context.stroke();
             context.restore();
         }
-    }
-
-    this.draw = function () {
-        var context = Graphic.context;
-        context.fillStyle = '#000';
-        context.rect(0, 0, Graphic.screenW/2, Graphic.screenH/2);
-        context.fill;
-        console.log("draws");
     }
 }
 

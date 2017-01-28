@@ -22,6 +22,7 @@ function Core() {
     }
 
     var draw = function () {
+        Graphic.context.clearRect(0, 0, Graphic.screenW, Graphic.screenH);
         var size = objectPool.length;
         for (var i = 0; i < size; i++) {
             objectPool[i].draw();
