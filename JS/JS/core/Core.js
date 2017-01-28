@@ -24,7 +24,7 @@ function Core() {
     var draw = function () {
         var size = objectPool.length;
         for (var i = 0; i < size; i++) {
-            objectPool[i].draw(dt);
+            objectPool[i].draw();
         }
     }
 }

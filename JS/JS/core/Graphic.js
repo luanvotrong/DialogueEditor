@@ -7,8 +7,10 @@ function Graphic() {
     this.Init = function () {
         this.canvas = document.getElementById("myCanvas");
         this.context = this.canvas.getContext("2d");
-        this.screenW = this.context.canvas.clientWidth;
-        this.screenH = this.context.canvas.clientHeight;
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.screenW = this.canvas.clientWidth;
+        this.screenH = this.canvas.clientHeight;
         console.log("Finished init Graphic w: " + this.screenW + " h: " + this.screenH);
     }
 }

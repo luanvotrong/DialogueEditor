@@ -2,6 +2,7 @@ function Main() {
     var FPS_INTERVAL = 1000 / 20;
     this.Init = function () {
         Graphic.Init();
+        Input.Init();
         last = Date.now();
         this.run();
     }
@@ -13,9 +14,7 @@ function Main() {
     }
 
     var loop = function () {
-
         var now = Date.now();
-        console.log("running");
         var dt = now - last;
         Core.GameLoop(dt);
         last = now;
