@@ -22,27 +22,21 @@ function Input() {
     }
     
     var onMouseDown = function(ev) {
-        if(ev.targetTouches.length <= 0)
-            return;
-        x = ev.targetTouches[0].pageX;
-        y = ev.targetTouches[0].pageY;
+        x = ev.pageX;
+        y = ev.pageY;
         isTouching = true;
         console.log("Down");   
     }
     
     var onMouseMove = function(ev) {
-        if(ev.targetTouches.length <= 0)
-            return;
-        x = ev.targetTouches[0].pageX;
-        y = ev.targetTouches[0].pageY;
+        x = ev.pageX;
+        y = ev.pageY;
         console.log("Moving");
     }
     
     var onMouseUp = function(ev) {
-        if(ev.targetTouches.length <= 0)
-            return;
-        x = ev.targetTouches[0].pageX;
-        y = ev.targetTouches[0].pageY;
+        x = ev.pageX;
+        y = ev.pageY;
         isTouching = false;
         console.log("Up");
     }
