@@ -1,10 +1,9 @@
 function Input() {
-    var x = 0;
-    var y = 0;
-    
-    var isTouching = false;
+    var objectPool = [];
     
     this.Init = function () {
+        objectPool = RootObjectPool.GetObjectPool();
+        
         Graphic.canvas.addEventListener('mousedown', onMouseDown, false);
         Graphic.canvas.addEventListener('touchstart', onMouseDown, false);
         Graphic.canvas.addEventListener('mousemove', onMouseMove, false);
@@ -15,36 +14,41 @@ function Input() {
         document.addEventListener('mousewheel', onScroll, false);
     }
     
-    this.GetTouchInfo = function() {
-        return {
-            x: x,
-            y: y,
-            isTouch: isTouching
-        }
-    }
-    
     var onScroll = function(ev) {
-        console.log(ev.wheelDeltaY);
+        var len = objectPool.length;
+        for(var i=0; i<len; i++) {
+            objectPool[i].onScroll(ev.wheelDeltaY);
+        }
     }
     
     var onMouseDown = function(ev) {
         x = ev.pageX;
         y = ev.pageY;
-        isTouching = true;
-        console.log("Down");   
+        
+        var len = objectPool.length;
+        for(var i=0; i<len; i++) {
+            objectPool[i].onMouseDown(x, y);
+        }
     }
     
     var onMouseMove = function(ev) {
         x = ev.pageX;
         y = ev.pageY;
-        console.log("Moving");
+        
+        var len = objectPool.length;
+        for(var i=0; i<len; i++) {
+            objectPool[i].onMouseMove(x, y);
+        }
     }
     
     var onMouseUp = function(ev) {
         x = ev.pageX;
         y = ev.pageY;
-        isTouching = false;
-        console.log("Up");
+        
+        var len = objectPool.length;
+        for(var i=0; i<len; i++) {
+            objectPool[i].onMouseUp(x, y);
+        }
     }
 }
 

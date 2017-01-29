@@ -17,7 +17,7 @@ function Main() {
     var loop = function () {
         var now = Date.now();
         var dt = now - last;
-        Core.GameLoop(dt);
+        Core.GameLoop(dt / 1000);
         last = now;
         //window.requestAnimationFrame(loop);
         setTimeout(loop, FPS_INTERVAL);
