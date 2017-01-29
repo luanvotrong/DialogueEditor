@@ -3,6 +3,7 @@ function Main() {
     this.Init = function () {
         Graphic.Init();
         Input.Init();
+        Core.Init();
         last = Date.now();
         this.run();
     }

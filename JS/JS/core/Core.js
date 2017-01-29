@@ -1,12 +1,8 @@
 function Core() {
     var objectPool = [];
-
-    this.AddObject = function (obj) {
-        objectPool.push(obj);
-    }
-
-    this.RemoveObject = function (obj) {
-        objectPool.pop(obj);
+    
+    this.Init = function() {
+        objectPool = RootObjectPool.GetObjectPool();
     }
 
     this.GameLoop = function (dt) {
@@ -31,3 +27,4 @@ function Core() {
 }
 
 var Core = new Core();
+var RootObjectPool = new ObjectPool();

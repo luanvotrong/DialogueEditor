@@ -27,4 +27,4 @@ function Scene() {
 }
 
 var Scene = new Scene();
-Core.AddObject(Scene);
+RootObjectPool.AddObject(Scene);

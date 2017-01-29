@@ -11,6 +11,8 @@ function Input() {
         Graphic.canvas.addEventListener('touchmove', onMouseMove, false);
         Graphic.canvas.addEventListener('mouseup', onMouseUp, false);
         Graphic.canvas.addEventListener('touchend', onMouseUp, false);
+        document.addEventListener('scroll', onScroll, false);
+        document.addEventListener('mousewheel', onScroll, false);
     }
     
     this.GetTouchInfo = function() {
@@ -19,6 +21,10 @@ function Input() {
             y: y,
             isTouch: isTouching
         }
+    }
+    
+    var onScroll = function(ev) {
+        console.log(ev.wheelDeltaY);
     }
     
     var onMouseDown = function(ev) {
