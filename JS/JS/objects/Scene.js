@@ -1,9 +1,17 @@
+function Lamp(min, max, v) {
+    if(v < min) 
+        return min;
+    if(v > max) 
+        return max;
+    return v;
+}
+
 function Scene() {
     var SCROLL_BASE = 0.02;
     var SCROLL_DE = 0.3;
 
-    var offsetX = Graphic.screenW / 2;
-    var offsetY = Graphic.screenH / 2;
+    var offsetX = 0;
+    var offsetY = 0;
     var checkClick = false;
     var dialogueBoxes = [];
     var globalScale = 1;
@@ -11,9 +19,10 @@ function Scene() {
 
     this.update = function (dt) {
         globalScale -= scaleOffset * dt;
-        offsetX += scaleOffset * offsetX * dt;
-        offsetY += scaleOffset * offsetY * dt;
-        
+        globalScale = Lamp(0.3, 1, globalScale);
+        offsetX = (1 - globalScale) * Graphic.screenW / 2;
+        offsetY = (1 - globalScale) * Graphic.screenH / 2;
+
         scaleOffset *= SCROLL_DE;
         scaleOffset = (Math.abs(scaleOffset) < 0.1) ? 0 : scaleOffset;
 
@@ -34,6 +43,7 @@ function Scene() {
             dialogueBoxes[i].draw();
         }
 
+        context.scale(1, 1);
         context.restore();
     }
 
@@ -80,4 +90,5 @@ RootObjectPool.AddObject(Scene);
 //
 //this.onMouseUp = function (x, y) {
 //
+//}
 //}
