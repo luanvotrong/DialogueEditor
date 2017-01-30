@@ -1,7 +1,7 @@
 function Lamp(min, max, v) {
-    if(v < min) 
+    if (v < min)
         return min;
-    if(v > max) 
+    if (v > max)
         return max;
     return v;
 }
@@ -10,21 +10,26 @@ function Scene() {
     var SCROLL_BASE = 0.02;
     var SCROLL_DE = 0.3;
 
+    var dragOffsetX = 0;
+    var dragOffsetY = 0;
     var offsetX = 0;
     var offsetY = 0;
-    var checkClick = false;
+
+    var isDragging = false;
+    var shouldCheckPress = false;
     var dialogueBoxes = [];
+
     var globalScale = 1;
-    var scaleOffset = 0;
+    var scaleSpeed = 0;
 
     this.update = function (dt) {
-        globalScale -= scaleOffset * dt;
+        globalScale -= scaleSpeed * dt;
         globalScale = Lamp(0.3, 1, globalScale);
         offsetX = (1 - globalScale) * Graphic.screenW / 2;
         offsetY = (1 - globalScale) * Graphic.screenH / 2;
 
-        scaleOffset *= SCROLL_DE;
-        scaleOffset = (Math.abs(scaleOffset) < 0.1) ? 0 : scaleOffset;
+        scaleSpeed *= SCROLL_DE;
+        scaleSpeed = (Math.abs(scaleSpeed) < 0.1) ? 0 : scaleSpeed;
 
         var len = dialogueBoxes.length;
         for (var i = 0; i < len; i++) {
@@ -35,7 +40,7 @@ function Scene() {
     this.draw = function () {
         var context = Graphic.context;
         context.save();
-        context.translate(offsetX, offsetY);
+        context.translate(offsetX + dragOffsetX, offsetY + dragOffsetY);
         context.scale(globalScale, globalScale);
 
         var len = dialogueBoxes.length;
@@ -48,25 +53,38 @@ function Scene() {
     }
 
     this.onScroll = function (delta) {
-        scaleOffset = delta * SCROLL_BASE;
+        scaleSpeed = delta * SCROLL_BASE;
         console.log(delta);
     }
 
+
+    var preX = 0;
+    var preY = 0;
     this.onMouseDown = function (x, y) {
-        checkClick = true;
+        isDragging = true;
+        shouldCheckPress = true;
+        preX = x;
+        preY = y;
     }
 
     this.onMouseMove = function (x, y) {
-        checkClick = false;
+        if (isDragging) {
+            dragOffsetX += (x - preX);
+            dragOffsetY += (y - preY);
+            preX = x;
+            preY = y;
+        }
+        shouldCheckPress = false;
     }
 
     this.onMouseUp = function (x, y) {
-        if (checkClick) {
+        if (shouldCheckPress) {
             var dialogueBox = new DialogueBox();
-            dialogueBox.Init(x, y);
+            dialogueBox.Init(x - dragOffsetX, y - dragOffsetY);
             dialogueBoxes.push(dialogueBox);
         }
-        checkClick = false;
+        isDragging = false;
+        shouldCheckPress = false;
     }
 }
 
