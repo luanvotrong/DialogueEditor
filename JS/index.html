@@ -5,15 +5,42 @@
     <meta charset="utf-8" />
     <title>Dialogue editor</title>
     <link rel="stylesheet" href="style/main.css" />
+    <!--
     <script src="JS/core/ObjectPool.js" async></script>
     <script src="JS/core/Input.js" async></script>
     <script src="JS/core/Core.js" async></script>
     <script src="JS/core/Graphic.js" async></script>
     
     <script src="JS/objects/DialogueBox.js" async></script>
+    <script src="JS/objects/SceneLayer.js" async></script>
     <script src="JS/objects/Scene.js" async></script>
     
     <script src="JS/core/Main.js" onload="window.Main.Init()" async></script>
+    -->
+    <script async=false defer=false src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        var scripts = [
+            "JS/core/ObjectPool.js",
+            "JS/core/Input.js",
+            "JS/core/Core.js",
+            "JS/core/Graphic.js",
+            "JS/objects/DialogueBox.js",
+            "JS/objects/SceneLayer.js",
+            "JS/objects/Scene.js",
+            "JS/core/Main.js"
+        ]
+        var num = scripts.length;
+        window.onload = function() {
+            var len = num;
+            for(var i=0; i<len; i++)
+            $.getScript(scripts[i]).done(function(){
+                num--;
+                if(num == 0) {
+                    window.Main.Init();
+                }
+            })
+        }
+    </script>
 </head>
 
 <body>
