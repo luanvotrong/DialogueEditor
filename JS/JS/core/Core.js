@@ -2,8 +2,6 @@ function Core() {
     var objectPool = [];
 
     this.Init = function () {
-        var Scene = new Scene();
-        RootObjectPool.AddObject(Scene);
         objectPool = RootObjectPool.GetObjectPool();
     }
 
