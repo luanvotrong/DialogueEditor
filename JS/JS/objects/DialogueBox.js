@@ -1,4 +1,6 @@
 function DialogueBox() {
+	var W = 500;
+	var H = 100;
     var mX, mY;
     
     this.Init = function(x, y) {
@@ -11,15 +13,9 @@ function DialogueBox() {
     this.draw = function () {
         var context = Graphic.context;
         context.save();
-        context.translate(mX, mY);
+        context.translate(mX - W/2, mY - H/2);
         context.fillStyle = "#fff";
-        context.beginPath();
-        context.arc(0, 0, 50, 0, 2 * Math.PI, false);
-        context.fillStyle = 'green';
-        context.fill();
-        context.lineWidth = 5;
-        context.strokeStyle = '#003300';
-        context.stroke();
+        context.fillRect(0, 0, W, H);
         context.restore();
     }
     this.onScroll = function (delta) {
