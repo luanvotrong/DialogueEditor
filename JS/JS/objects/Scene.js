@@ -62,7 +62,7 @@ function Scene() {
     var preY = 0;
     this.onMouseDown = function (x, y) {
 		for(var i=0; i<dialogueBoxes.length; i++) {
-			if(dialogueBoxes[i].onMouseDown(x, y)) {
+			if(dialogueBoxes[i].onMouseDown(x - dragOffsetX, y - dragOffsetY)) {
 				return true;
 			}
 		}
@@ -74,7 +74,7 @@ function Scene() {
 
     this.onMouseMove = function (x, y) {
 		for(var i=0; i<dialogueBoxes.length; i++) {
-			if(dialogueBoxes[i].onMouseMove(x, y)) {
+			if(dialogueBoxes[i].onMouseMove(x - dragOffsetX, y - dragOffsetY)) {
 				return true;
 			}
 		}
@@ -90,7 +90,7 @@ function Scene() {
 
     this.onMouseUp = function (x, y) {
 		for(var i=0; i<dialogueBoxes.length; i++) {
-			if(dialogueBoxes[i].onMouseUp(x, y)) {
+			if(dialogueBoxes[i].onMouseUp(x - dragOffsetX, y - dragOffsetY)) {
 				return true;
 			}
 		}
