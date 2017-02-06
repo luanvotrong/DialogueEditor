@@ -22,18 +22,34 @@ function DialogueBox() {
     this.onScroll = function (delta) {
 		return true;
     }
+	
+	var isInBound = function(x, y) {
+		if(Math.abs(x - mX) > W/2 || Math.abs(y - mY) > H/2) {
+			return false;
+		}
+		return true;
+	}
 
     this.onMouseDown = function (x, y) {
+		if(!isInBound(x,  y)) {
+			return false;
+		}
 		shouldCheckPress = true;
 		return true;
     }
 
     this.onMouseMove = function (x, y) {
+		if(!isInBound(x,  y)) {
+			return false;
+		}
 		shouldCheckPress = false;
 		return true;
     }
 
     this.onMouseUp = function (x, y) {
+		if(!isInBound(x,  y)) {
+			return false;
+		}
 		if(shouldCheckPress) {
 			var text = prompt("Enter diaglogue", "diaglogue");
 			console.log(text);

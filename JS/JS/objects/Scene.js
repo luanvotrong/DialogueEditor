@@ -66,7 +66,6 @@ function Scene() {
 				return true;
 			}
 		}
-		
         isDragging = true;
         shouldCheckPress = true;
         preX = x;
