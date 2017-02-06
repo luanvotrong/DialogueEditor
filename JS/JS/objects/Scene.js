@@ -61,6 +61,12 @@ function Scene() {
     var preX = 0;
     var preY = 0;
     this.onMouseDown = function (x, y) {
+		for(var i=0; i<dialogueBoxes.length; i++) {
+			if(dialogueBoxes[i].onMouseDown(x, y)) {
+				return true;
+			}
+		}
+		
         isDragging = true;
         shouldCheckPress = true;
         preX = x;
@@ -68,6 +74,12 @@ function Scene() {
     }
 
     this.onMouseMove = function (x, y) {
+		for(var i=0; i<dialogueBoxes.length; i++) {
+			if(dialogueBoxes[i].onMouseMove(x, y)) {
+				return true;
+			}
+		}
+		
         if (isDragging) {
             dragOffsetX += (x - preX);
             dragOffsetY += (y - preY);
@@ -78,6 +90,12 @@ function Scene() {
     }
 
     this.onMouseUp = function (x, y) {
+		for(var i=0; i<dialogueBoxes.length; i++) {
+			if(dialogueBoxes[i].onMouseUp(x, y)) {
+				return true;
+			}
+		}
+		
         if (shouldCheckPress) {
             var dialogueBox = new DialogueBox();
             dialogueBox.Init(x - dragOffsetX, y - dragOffsetY);
