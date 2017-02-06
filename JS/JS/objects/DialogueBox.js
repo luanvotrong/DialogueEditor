@@ -3,6 +3,7 @@ function DialogueBox() {
 	var H = 100;
     var mX, mY;
     var shouldCheckPress = false;
+	var isDragging = false;
     
     this.Init = function(x, y) {
         mX = x;
@@ -29,25 +30,47 @@ function DialogueBox() {
 		}
 		return true;
 	}
+	
+	var resetTouch = function() {
+		shouldCheckPress = false;
+		isDragging = false;
+	}
 
+	var preX = 0;
+    var preY = 0;
     this.onMouseDown = function (x, y) {
 		if(!isInBound(x,  y)) {
+			resetTouch();
 			return false;
 		}
+		
+		preX = x;
+		preY = y;
 		shouldCheckPress = true;
+		isDragging = true;
 		return true;
     }
 
     this.onMouseMove = function (x, y) {
 		if(!isInBound(x,  y)) {
+			resetTouch();
 			return false;
 		}
+		
+		if(isDragging) {
+			mX = mX + (x - preX);
+			mY = mY + (y - preY);
+			console.log(x - preX + " " + y - preY);
+		}
+		preX = x;
+		preY = y;
 		shouldCheckPress = false;
 		return true;
     }
 
     this.onMouseUp = function (x, y) {
 		if(!isInBound(x,  y)) {
+			resetTouch();
 			return false;
 		}
 		if(shouldCheckPress) {
@@ -56,6 +79,7 @@ function DialogueBox() {
 		}
 		
 		shouldCheckPress = false;
+		isDragging = false;
 		return true;
     }
 }
