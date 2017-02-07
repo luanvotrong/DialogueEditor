@@ -19,7 +19,7 @@ function Button() {
 		
 		context.fillStyle = "#fff";
 		context.font="20px Georgia";
-		context.fillText(label, 0, rect.h/2, rect.w);
+		context.fillText(label, 0, 0, rect.w);
         context.restore();
 	}
 	

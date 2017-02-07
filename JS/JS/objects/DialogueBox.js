@@ -5,15 +5,17 @@ function DialogueBox() {
 	var shouldCheckPress = false;
 	var isDragging = false;
 	var buttons = [];
+	var text = [];
 
 	this.Init = function(x, y) {
 		mX = x;
 		mY = y;
-
+		text.push("fsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfds\
+				  fsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfds");
 		var createBtn = new Button();
 		createBtn.Init(new Rect(450, 75, 50, 25),
 					   "create");
-		
+
 		buttons.push(createBtn);
 	}
 
@@ -29,6 +31,8 @@ function DialogueBox() {
 		context.translate(mX - W/2, mY - H/2);
 		context.fillStyle = "#fff";
 		context.fillRect(0, 0, W, H);
+		
+		wrapText(context, text[0], 0, 0, W, H/10);
 
 		for(var i=0; i<buttons.length; i++) {
 			buttons[i].draw();
@@ -95,11 +99,38 @@ function DialogueBox() {
 					return true;
 				}
 			}
-			var text = prompt("Enter diaglogue", "diaglogue");
-			console.log(text);
+			text[0] = prompt("Enter diaglogue", text);
+			if(!text[0]) {
+				text[0]  = "diaglogue";
+			}
+			
+			console.log(text[0]);
 		}
 
 		resetTouch();
 		return true;
+	}
+
+	var wrapText = function(context, text, x, y, maxWidth, lineHeight) {
+		context.textBaseline="top";
+		context.fillStyle = "#000";
+		context.font="20px Georgia";
+		var words = text.split(' ');
+		var line = '';
+
+		for(var n = 0; n < words.length; n++) {
+			var testLine = line + words[n] + ' ';
+			var metrics = context.measureText(testLine);
+			var testWidth = metrics.width;
+			if (testWidth > maxWidth && n > 0) {
+				context.fillText(line, x, y);
+				line = words[n] + ' ';
+				y += lineHeight;
+			}
+			else {
+				line = testLine;
+			}
+		}
+		context.fillText(line, x, y);
 	}
 }
