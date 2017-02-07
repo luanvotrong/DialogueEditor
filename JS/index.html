@@ -17,27 +17,18 @@
     
     <script src="JS/core/Main.js" onload="window.Main.Init()" async></script>
     -->
-    <script async=false defer=false src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script async=false defer=false src="JS/core/Rect.js"></script>
+    <script async=false defer=false src="JS/core/ObjectPool.js"></script>
+    <script async=false defer=false src="JS/core/Input.js"></script>
+    <script async=false defer=false src="JS/core/Core.js"></script>
+    <script async=false defer=false src="JS/core/Graphic.js"></script>
+    <script async=false defer=false src="JS/core/Button.js"></script>
+    <script async=false defer=false src="JS/objects/DialogueBox.js"></script>
+    <script async=false defer=false src="JS/objects/Scene.js"></script>
+    <script async=false defer=false src="JS/core/Main.js"></script>
     <script>
-        var scripts = [
-            "JS/core/ObjectPool.js",
-            "JS/core/Input.js",
-            "JS/core/Core.js",
-            "JS/core/Graphic.js",
-            "JS/objects/DialogueBox.js",
-            "JS/objects/Scene.js",
-            "JS/core/Main.js"
-        ]
-        var num = scripts.length;
         window.onload = function() {
-            var len = num;
-            for(var i=0; i<len; i++)
-            $.getScript(scripts[i]).done(function(){
-                num--;
-                if(num == 0) {
                     window.Main.Init();
-                }
-            })
         }
     </script>
 </head>

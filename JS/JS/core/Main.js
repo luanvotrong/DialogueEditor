@@ -1,5 +1,5 @@
 function Main() {
-    var FPS_INTERVAL = 1000 / 20;
+    var FPS_INTERVAL = 1000 / 30;
     this.Init = function () {
         Graphic.Init();
         Input.Init();
