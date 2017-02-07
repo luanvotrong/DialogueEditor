@@ -1,4 +1,7 @@
 function DialogueBox() {
+	var btnW = 50;
+	var btnH = 25;
+
 	var W = 500;
 	var H = 100;
 	var mX, mY;
@@ -6,17 +9,27 @@ function DialogueBox() {
 	var isDragging = false;
 	var buttons = [];
 	var text = [];
+	var isMe = true;
 
 	this.Init = function(x, y) {
 		mX = x;
 		mY = y;
 		text.push("fsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfds\
-				  fsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfds");
-		var createBtn = new Button();
-		createBtn.Init(new Rect(450, 75, 50, 25),
-					   "create");
+fsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfds");
+		var x = W - btnW;
+		var y = H - btnH;
+		var btn = new Button();
+		btn.Init(new Rect(x, y, btnW, btnH),
+				 "create",
+				 createDiaglogue);
+		buttons.push(btn);
 
-		buttons.push(createBtn);
+		x -= btnW;
+		btn = new Button();
+		btn.Init(new Rect(x, y, btnW, btnH),
+				 "" + isMe,
+				toggleChar);
+		buttons.push(btn);
 	}
 
 	this.update = function (dt) {
@@ -31,7 +44,7 @@ function DialogueBox() {
 		context.translate(mX - W/2, mY - H/2);
 		context.fillStyle = "#fff";
 		context.fillRect(0, 0, W, H);
-		
+
 		wrapText(context, text[0], 0, 0, W, H/10);
 
 		for(var i=0; i<buttons.length; i++) {
@@ -94,21 +107,33 @@ function DialogueBox() {
 		if(shouldCheckPress) {
 			for(var i=0; i<buttons.length; i++) {
 				if(buttons[i].isInBound(x - mX + W/2, y - mY + H/2)) {
-					console.log("create");
+					buttons[i].triggerCallback();
 					resetTouch();
 					return true;
 				}
 			}
+			var tempText = text[0];
 			text[0] = prompt("Enter diaglogue", text);
 			if(!text[0]) {
-				text[0]  = "diaglogue";
+				text[0]  = tempText;
 			}
-			
-			console.log(text[0]);
+
+			var json = JSON.stringify(this);
+			console.log(json);
 		}
 
 		resetTouch();
 		return true;
+	}
+
+	var createDiaglogue = function(btn) {
+		console.log("create");
+	}
+	
+	var toggleChar = function(btn) {
+		console.log("toggle");
+		isMe = !isMe;
+		btn.setLabel(""+isMe);
 	}
 
 	var wrapText = function(context, text, x, y, maxWidth, lineHeight) {
@@ -133,4 +158,4 @@ function DialogueBox() {
 		}
 		context.fillText(line, x, y);
 	}
-}
+	}
