@@ -1,14 +1,18 @@
 [{
-  "uid": "5767c0cb-abe9-e5cc-0418-4bdd29bfa370",
+  "uuid": "5767c0cb-abe9-e5cc-0418-4bdd29bfa370",
   "text": "Dialogue",
   "role": "mc",
   "father": null,
-  "child": ["e0dec26e-2aae-7668-0f59-d1f998e33437"]
+  "child": ["e0dec26e-2aae-7668-0f59-d1f998e33437"],
+  "x": 500,
+  "y" : 300
 },
 {
-  "uid": "5767c0cb-abe9-e5cc-0418-4bdd29bfa370",
+  "uuid": "e0dec26e-2aae-7668-0f59-d1f998e33437",
   "text": "Dialogue",
   "role": "mc",
-  "father": "e0dec26e-2aae-7668-0f59-d1f998e33437",
-  "child": []
+  "father": "5767c0cb-abe9-e5cc-0418-4bdd29bfa370",
+  "child": [],
+  "x": 500,
+  "y" : 600
 }]

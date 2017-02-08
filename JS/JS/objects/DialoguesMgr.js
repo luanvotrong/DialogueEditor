@@ -1,20 +1,26 @@
 function DialoguesMgr() {
 	var dialogues = [];
+	var self = this;
 
 	this.init = function(json) {
 		var objects = JSON.parse(json);
-		debugger;
-		console.log(objects);
+		var node = null;
+		for(var i=0; i<objects.length; i++) {
+			if(objects[i].father == null) {
+				node = objects[i];
+				break;
+			}
+		}
+		
+		Serializer.initFromFile(node.uuid, objects);
 	}
 	
 	this.getDialogues = function() {
 		return dialogues;
 	}
-
-	var createDialogue = function(dialogue) {
-		var dialogueBox = new DialogueBox();
-		dialogueBox.Init(x - dragOffsetX, y - dragOffsetY);
-		dialogueBoxes.push(dialogueBox);
+	
+	this.addDialogue = function(dialogue) {
+		
 	}
 }
 
