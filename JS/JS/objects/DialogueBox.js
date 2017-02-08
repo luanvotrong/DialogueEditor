@@ -8,12 +8,12 @@ function DialogueBox() {
 	var shouldCheckPress = false;
 	var isDragging = false;
 	var buttons = [];
-	var isMe = true;
 	
 	var uuid;
 	var mX, mY;
 	var text = "Dialogue";
 	var father = null;
+	var role = "mc";
 	var child = [];
 
 	this.Init = function(_uuid) {
@@ -29,7 +29,7 @@ function DialogueBox() {
 		x -= btnW;
 		btn = new Button();
 		btn.Init(new Rect(x, y, btnW, btnH),
-				 "" + isMe,
+				 role,
 				toggleChar);
 		buttons.push(btn);
 	}
@@ -37,6 +37,10 @@ function DialogueBox() {
 	this.setDetails = function(_father, _text) {
 		father = _father;
 		text = _text;
+	}
+	
+	this.getUUID = function() {
+		return uuid;
 	}
 	
 	this.addChild = function(_child) {
@@ -158,13 +162,12 @@ function DialogueBox() {
 	}
 
 	var createDiaglogue = function(btn) {
-		console.log("create");
+		DialoguesMgr.addDialogue(uuid);
 	}
 	
 	var toggleChar = function(btn) {
 		console.log("toggle");
-		isMe = !isMe;
-		isMe ? btn.setLabel("Me") : btn.setLabel("Char");
+		btn.setLabel(role);
 	}
 
 	var wrapText = function(context, text, x, y, maxWidth, lineHeight) {
@@ -189,4 +192,16 @@ function DialogueBox() {
 		}
 		context.fillText(line, x, y);
 	}
+	
+	this.serialize = function() {
+		return {
+			uuid: uuid,
+			text: text,
+			role: role,
+			father: father,
+			child: child,
+			x: mX,
+			y: mY
+		}
 	}
+}
