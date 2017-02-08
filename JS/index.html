@@ -5,30 +5,39 @@
     <meta charset="utf-8" />
     <title>Dialogue editor</title>
     <link rel="stylesheet" href="style/main.css" />
-    <!--
-    <script src="JS/core/ObjectPool.js" async></script>
-    <script src="JS/core/Input.js" async></script>
-    <script src="JS/core/Core.js" async></script>
-    <script src="JS/core/Graphic.js" async></script>
-    
-    <script src="JS/objects/DialogueBox.js" async></script>
-    <script src="JS/objects/SceneLayer.js" async></script>
-    <script src="JS/objects/Scene.js" async></script>
-    
-    <script src="JS/core/Main.js" onload="window.Main.Init()" async></script>
-    -->
+    <input id="myFile" type="file" />
     <script async=false defer=false src="JS/core/Rect.js"></script>
     <script async=false defer=false src="JS/core/ObjectPool.js"></script>
     <script async=false defer=false src="JS/core/Input.js"></script>
     <script async=false defer=false src="JS/core/Core.js"></script>
     <script async=false defer=false src="JS/core/Graphic.js"></script>
     <script async=false defer=false src="JS/core/Button.js"></script>
+    <script async=false defer=false src="JS/objects/DialoguesMgr.js"></script>
     <script async=false defer=false src="JS/objects/DialogueBox.js"></script>
     <script async=false defer=false src="JS/objects/Scene.js"></script>
     <script async=false defer=false src="JS/core/Main.js"></script>
     <script>
         window.onload = function() {
-                    window.Main.Init();
+            
+            document.getElementById('myFile').addEventListener('change', readSingleFile, false);
+
+            function readSingleFile(evt) {
+                //Retrieve the first (and only!) File from the FileList object
+                var f = evt.target.files[0];
+
+                if (f) {
+                    var r = new FileReader();
+                    r.onload = function(e) {
+                        var contents = e.target.result;
+                        //alert("Got the file.n" + "name: " + f.name + "n" + "type: " + f.type + "n" + "size: " + f.size + " bytesn" + "starts with: " + contents.substr(1, contents.indexOf("n")));
+                        document.getElementById('myFile').style.display = 'none';
+                    }
+                    r.readAsText(f);
+                } else {
+                    alert("Failed to load file");
+                }
+            }
+            window.Main.Init();
         }
     </script>
 </head>

@@ -133,7 +133,7 @@ fsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfds");
 	var toggleChar = function(btn) {
 		console.log("toggle");
 		isMe = !isMe;
-		btn.setLabel(""+isMe);
+		isMe ? btn.setLabel("Me") : btn.setLabel("Char");
 	}
 
 	var wrapText = function(context, text, x, y, maxWidth, lineHeight) {

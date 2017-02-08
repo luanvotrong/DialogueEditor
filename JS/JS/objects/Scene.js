@@ -17,7 +17,7 @@ function Scene() {
 
     var isDragging = false;
     var shouldCheckPress = false;
-    var dialogueBoxes = [];
+    var dialogueBoxes = DialoguesMgr.getDialogues();
 
     var globalScale = 1;
     var scaleSpeed = 0;

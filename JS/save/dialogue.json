@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Dialogue editor</title>
+    <link rel="stylesheet" href="style/main.css" />
+    <!--
+    <script src="JS/core/ObjectPool.js" async></script>
+    <script src="JS/core/Input.js" async></script>
+    <script src="JS/core/Core.js" async></script>
+    <script src="JS/core/Graphic.js" async></script>
+    
+    <script src="JS/objects/DialogueBox.js" async></script>
+    <script src="JS/objects/SceneLayer.js" async></script>
+    <script src="JS/objects/Scene.js" async></script>
+    
+    <script src="JS/core/Main.js" onload="window.Main.Init()" async></script>
+    -->
+    <script async=false defer=false src="JS/core/Rect.js"></script>
+    <script async=false defer=false src="JS/core/ObjectPool.js"></script>
+    <script async=false defer=false src="JS/core/Input.js"></script>
+    <script async=false defer=false src="JS/core/Core.js"></script>
+    <script async=false defer=false src="JS/core/Graphic.js"></script>
+    <script async=false defer=false src="JS/core/Button.js"></script>
+    <script async=false defer=false src="JS/objects/DialogueBox.js"></script>
+    <script async=false defer=false src="JS/objects/Scene.js"></script>
+    <script async=false defer=false src="JS/core/Main.js"></script>
+    <script>
+        window.onload = function() {
+                    window.Main.Init();
+        }
+    </script>
+</head>
+
+<body>
+    <canvas id="myCanvas"></canvas>
+</body>
+
+</html>
