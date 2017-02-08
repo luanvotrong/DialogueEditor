@@ -43,6 +43,10 @@ function DialogueBox() {
 		return uuid;
 	}
 	
+	this.getFather = function() {
+		return father;
+	}
+	
 	this.addChild = function(_child) {
 		for(var i=0; i<child.length; i++) {
 			if(child[i] == _child) {
@@ -193,7 +197,7 @@ function DialogueBox() {
 		context.fillText(line, x, y);
 	}
 	
-	this.serialize = function() {
+	this.mySerialize = function() {
 		return {
 			uuid: uuid,
 			text: text,

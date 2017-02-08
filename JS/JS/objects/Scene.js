@@ -96,6 +96,7 @@ function Scene() {
 		}
 		
         if (shouldCheckPress) {
+			console.log(Serializer.toFile());
         }
         isDragging = false;
         shouldCheckPress = false;

@@ -12,7 +12,7 @@ function DialoguesMgr() {
 			}
 		}
 
-		Serializer.initFromFile(node.uuid, objects);
+		Deserializer.initFromFile(node.uuid, objects);
 	}
 
 	this.getDialogues = function() {
