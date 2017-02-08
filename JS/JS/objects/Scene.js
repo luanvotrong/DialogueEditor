@@ -96,9 +96,6 @@ function Scene() {
 		}
 		
         if (shouldCheckPress) {
-            var dialogueBox = new DialogueBox();
-            dialogueBox.Init(x - dragOffsetX, y - dragOffsetY);
-            dialogueBoxes.push(dialogueBox);
         }
         isDragging = false;
         shouldCheckPress = false;

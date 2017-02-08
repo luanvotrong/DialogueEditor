@@ -6,6 +6,7 @@
     <title>Dialogue editor</title>
     <link rel="stylesheet" href="style/main.css" />
     <input id="myFile" type="file" />
+    <script async=false defer=false src="JS/core/Utilities.js"></script>
     <script async=false defer=false src="JS/core/Rect.js"></script>
     <script async=false defer=false src="JS/core/ObjectPool.js"></script>
     <script async=false defer=false src="JS/core/Input.js"></script>
@@ -18,7 +19,6 @@
     <script async=false defer=false src="JS/core/Main.js"></script>
     <script>
         window.onload = function() {
-            
             document.getElementById('myFile').addEventListener('change', readSingleFile, false);
 
             function readSingleFile(evt) {
@@ -29,8 +29,8 @@
                     var r = new FileReader();
                     r.onload = function(e) {
                         var contents = e.target.result;
-                        //alert("Got the file.n" + "name: " + f.name + "n" + "type: " + f.type + "n" + "size: " + f.size + " bytesn" + "starts with: " + contents.substr(1, contents.indexOf("n")));
                         document.getElementById('myFile').style.display = 'none';
+						DialoguesMgr.init(contents);
                     }
                     r.readAsText(f);
                 } else {

@@ -4,18 +4,17 @@ function DialogueBox() {
 
 	var W = 500;
 	var H = 100;
-	var mX, mY;
 	var shouldCheckPress = false;
 	var isDragging = false;
 	var buttons = [];
-	var text = [];
 	var isMe = true;
+	
+	var uuid;
+	var mX, mY;
+	var text = "Dialogue";
 
-	this.Init = function(x, y) {
-		mX = x;
-		mY = y;
-		text.push("fsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfds\
-fsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfds");
+	this.Init = function(_uuid) {
+		uuid = _uuid;
 		var x = W - btnW;
 		var y = H - btnH;
 		var btn = new Button();
@@ -31,6 +30,18 @@ fsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfds");
 				toggleChar);
 		buttons.push(btn);
 	}
+	
+	this.setDetails = function(_father, _child, text) {
+	}
+	
+	this.setPos = function(x, y) {
+		mX = x;
+		mY = y;
+	}
+	
+	this.getPos = function() {
+		return {x: mX, y: mY};
+	}
 
 	this.update = function (dt) {
 		for(var i=0; i<buttons.length; i++) {
@@ -45,7 +56,7 @@ fsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfds");
 		context.fillStyle = "#fff";
 		context.fillRect(0, 0, W, H);
 
-		wrapText(context, text[0], 0, 0, W, H/10);
+		wrapText(context, text, 0, 0, W, H/10);
 
 		for(var i=0; i<buttons.length; i++) {
 			buttons[i].draw();
@@ -112,14 +123,11 @@ fsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfdsfsdafdsasdfsdafdasfds");
 					return true;
 				}
 			}
-			var tempText = text[0];
-			text[0] = prompt("Enter diaglogue", text);
-			if(!text[0]) {
-				text[0]  = tempText;
+			var tempText = text;
+			text = prompt("Enter diaglogue", text);
+			if(!text) {
+				text = tempText;
 			}
-
-			var json = JSON.stringify(this);
-			console.log(json);
 		}
 
 		resetTouch();
