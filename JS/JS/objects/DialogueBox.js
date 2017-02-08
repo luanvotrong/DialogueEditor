@@ -1,9 +1,10 @@
 function DialogueBox() {
 	var btnW = 50;
 	var btnH = 25;
+	
+	var W = BOX_W;
+	var H = BOX_H;
 
-	var W = 500;
-	var H = 100;
 	var shouldCheckPress = false;
 	var isDragging = false;
 	var buttons = [];
@@ -12,6 +13,8 @@ function DialogueBox() {
 	var uuid;
 	var mX, mY;
 	var text = "Dialogue";
+	var father = null;
+	var child = [];
 
 	this.Init = function(_uuid) {
 		uuid = _uuid;
@@ -31,7 +34,27 @@ function DialogueBox() {
 		buttons.push(btn);
 	}
 	
-	this.setDetails = function(_father, _child, text) {
+	this.setDetails = function(_father, _text) {
+		father = _father;
+		text = _text;
+	}
+	
+	this.addChild = function(_child) {
+		for(var i=0; i<child.length; i++) {
+			if(child[i] == _child) {
+				return;
+			}
+		}
+		
+		child.push(_child);
+	}
+	
+	this.removeChild = function(_child) {
+		for(var i=0; i<child.length; i++) {
+			if(child[i] == _child) {
+				child.splice(i, 1);
+			}
+		}
 	}
 	
 	this.setPos = function(x, y) {

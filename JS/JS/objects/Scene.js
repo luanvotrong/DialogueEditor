@@ -24,7 +24,7 @@ function Scene() {
 
     this.update = function (dt) {
         globalScale -= scaleSpeed * dt;
-        globalScale = Lamp(0.3, 1, globalScale);
+        globalScale = Lamp(0.1, 1, globalScale);
         offsetX = (1 - globalScale) * Graphic.screenW / 2;
         offsetY = (1 - globalScale) * Graphic.screenH / 2;
 

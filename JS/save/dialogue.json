@@ -3,5 +3,12 @@
   "text": "Dialogue",
   "role": "mc",
   "father": null,
+  "child": ["e0dec26e-2aae-7668-0f59-d1f998e33437"]
+},
+{
+  "uid": "5767c0cb-abe9-e5cc-0418-4bdd29bfa370",
+  "text": "Dialogue",
+  "role": "mc",
+  "father": "e0dec26e-2aae-7668-0f59-d1f998e33437",
   "child": []
 }]
