@@ -19,6 +19,11 @@ function Serializer() {
 	this.createInfo = function(node, objects, res) {
 		var object = this.findInfo(objects, node);
 		res.push(object.mySerialize());
+		
+		var child = object.getChild();
+		for(var i=0; i<child.length; i++) {
+			this.createInfo(child[i], objects, res);
+		}
 	}
 	
 	this.findInfo = function(objects, uuid) {
@@ -58,6 +63,9 @@ function Deserializer() {
 		dialogueBox.Init(info.uuid);
 		dialogueBox.setDetails(info.father, info.text);
 		dialogueBox.setPos(info.x, info.y);
+		for(var i=0; i<info.child.length; i++) {
+			dialogueBox.addChild(info.child[i]);
+		}
 		DialoguesMgr.getDialogues().push(dialogueBox);
 	}
 }

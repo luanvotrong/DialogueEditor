@@ -96,7 +96,7 @@ function Scene() {
 		}
 		
         if (shouldCheckPress) {
-			console.log(Serializer.toFile());
+			prompt("ctrl+c", Serializer.toFile());
         }
         isDragging = false;
         shouldCheckPress = false;

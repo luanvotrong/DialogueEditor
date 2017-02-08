@@ -47,6 +47,10 @@ function DialogueBox() {
 		return father;
 	}
 	
+	this.getChild = function() {
+		return child;
+	}
+
 	this.addChild = function(_child) {
 		for(var i=0; i<child.length; i++) {
 			if(child[i] == _child) {
