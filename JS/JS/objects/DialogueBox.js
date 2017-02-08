@@ -13,7 +13,7 @@ function DialogueBox() {
 	var mX, mY;
 	var text = "Dialogue";
 	var father = null;
-	var role = "mc";
+	var role = 0;
 	var child = [];
 
 	this.Init = function(_uuid) {
@@ -29,7 +29,7 @@ function DialogueBox() {
 		x -= btnW;
 		btn = new Button();
 		btn.Init(new Rect(x, y, btnW, btnH),
-				 role,
+				 CHARS[role],
 				 toggleChar);
 		buttons.push(btn);
 	}
@@ -196,7 +196,9 @@ function DialogueBox() {
 
 	var toggleChar = function(btn) {
 		console.log("toggle");
-		btn.setLabel(role);
+		role++;
+		role = role == CHARS.length ? 0 : role;
+		btn.setLabel(CHARS[role]);
 	}
 
 	var wrapText = function(context, text, x, y, maxWidth, lineHeight) {
@@ -226,7 +228,7 @@ function DialogueBox() {
 		return {
 			uuid: uuid,
 			text: text,
-			role: role,
+			role: CHARS[role],
 			father: father,
 			child: child,
 			x: mX,

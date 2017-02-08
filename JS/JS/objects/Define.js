@@ -1,4 +1,4 @@
-var char = [
+var CHARS = [
 	"main",
 	"char1",
 	"char2"

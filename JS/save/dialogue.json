@@ -11,8 +11,32 @@
 		"text" : "Dialogue",
 		"role" : "mc",
 		"father" : "5767c0cb-abe9-e5cc-0418-4bdd29bfa370",
+		"child" : ["cabc5e97-5355-8212-8bde-e6bd97ffef0a", "4b06c065-0ab5-4dbd-e908-2fef511e43c0", "c5e23b12-8e8a-a0af-bb95-096943c0644a"],
+		"x" : 553,
+		"y" : 468
+	}, {
+		"uuid" : "cabc5e97-5355-8212-8bde-e6bd97ffef0a",
+		"text" : "Dialogue",
+		"role" : "mc",
+		"father" : "e0dec26e-2aae-7668-0f59-d1f998e33437",
 		"child" : [],
-		"x" : 619,
-		"y" : 441
+		"x" : 369,
+		"y" : 759
+	}, {
+		"uuid" : "4b06c065-0ab5-4dbd-e908-2fef511e43c0",
+		"text" : "Dialogue",
+		"role" : "mc",
+		"father" : "e0dec26e-2aae-7668-0f59-d1f998e33437",
+		"child" : [],
+		"x" : 971,
+		"y" : 735
+	}, {
+		"uuid" : "c5e23b12-8e8a-a0af-bb95-096943c0644a",
+		"text" : "Dialogue",
+		"role" : "mc",
+		"father" : "e0dec26e-2aae-7668-0f59-d1f998e33437",
+		"child" : [],
+		"x" : 1509,
+		"y" : 527
 	}
 ]
