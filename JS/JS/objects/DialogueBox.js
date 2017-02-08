@@ -1,14 +1,14 @@
 function DialogueBox() {
 	var btnW = 50;
 	var btnH = 25;
-	
+
 	var W = BOX_W;
 	var H = BOX_H;
 
 	var shouldCheckPress = false;
 	var isDragging = false;
 	var buttons = [];
-	
+
 	var uuid;
 	var mX, mY;
 	var text = "Dialogue";
@@ -30,23 +30,23 @@ function DialogueBox() {
 		btn = new Button();
 		btn.Init(new Rect(x, y, btnW, btnH),
 				 role,
-				toggleChar);
+				 toggleChar);
 		buttons.push(btn);
 	}
-	
+
 	this.setDetails = function(_father, _text) {
 		father = _father;
 		text = _text;
 	}
-	
+
 	this.getUUID = function() {
 		return uuid;
 	}
-	
+
 	this.getFather = function() {
 		return father;
 	}
-	
+
 	this.getChild = function() {
 		return child;
 	}
@@ -57,10 +57,10 @@ function DialogueBox() {
 				return;
 			}
 		}
-		
+
 		child.push(_child);
 	}
-	
+
 	this.removeChild = function(_child) {
 		for(var i=0; i<child.length; i++) {
 			if(child[i] == _child) {
@@ -68,12 +68,20 @@ function DialogueBox() {
 			}
 		}
 	}
-	
+
 	this.setPos = function(x, y) {
 		mX = x;
 		mY = y;
 	}
 	
+	this.getX = function() {
+		return mX;
+	}
+	
+	this.getY = function() {
+		return mY;
+	}
+
 	this.getPos = function() {
 		return {x: mX, y: mY};
 	}
@@ -86,6 +94,19 @@ function DialogueBox() {
 
 	this.draw = function () {
 		var context = Graphic.context;
+		//draw relations
+		context.save();
+		context.strokeStyle = "#0f0";
+		for(var i=0; i<child.length; i++) {
+			var object = DialoguesMgr.findDialogue(child[i]);
+			context.beginPath();
+			context.moveTo(mX,mY);
+			context.lineTo(object.getX(),object.getY());
+			context.stroke();
+		}
+		context.restore();
+
+		//draw box
 		context.save();
 		context.translate(mX - W/2, mY - H/2);
 		context.fillStyle = "#fff";
@@ -172,7 +193,7 @@ function DialogueBox() {
 	var createDiaglogue = function(btn) {
 		DialoguesMgr.addDialogue(uuid);
 	}
-	
+
 	var toggleChar = function(btn) {
 		console.log("toggle");
 		btn.setLabel(role);
@@ -200,7 +221,7 @@ function DialogueBox() {
 		}
 		context.fillText(line, x, y);
 	}
-	
+
 	this.mySerialize = function() {
 		return {
 			uuid: uuid,
